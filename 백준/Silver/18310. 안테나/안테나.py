@@ -1,0 +1,6 @@
+N = int(input())
+lis = list(map(int,input().split()))
+lis.sort()
+point = len(lis)
+if point%2==1: print(lis[point//2])
+elif point%2==0: print(lis[point//2-1])
