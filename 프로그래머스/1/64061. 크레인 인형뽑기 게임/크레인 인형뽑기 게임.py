@@ -1,22 +1,14 @@
 def solution(board, moves):
     answer = 0
-    length = len(board)
     bucket = []
-    point = None
     for m in moves:
-        for catch in range(length):
+        for catch in range(len(board)):
             if board[catch][m - 1] > 0:
-                if point == board[catch][m - 1]:
+                if len(bucket) > 0 and bucket[-1] == board[catch][m - 1]:
+                    bucket.pop()
                     answer += 2
-                    del bucket[-1]
-                    if bucket is []:
-                        point = None
-                    elif len(bucket) > 0:
-                        point = bucket[-1]
-                    board[catch][m - 1] = 0
-                    break
-                bucket.append(board[catch][m - 1])
-                point = board[catch][m - 1]
+                else:
+                    bucket.append(board[catch][m - 1])
                 board[catch][m - 1] = 0
                 break
             else:
